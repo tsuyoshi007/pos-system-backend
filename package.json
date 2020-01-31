@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "core-js": "3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^3.21.2",
+    "morgan": "^1.9.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "pg": "^7.12.1"
+  },
+  "scripts": {
+    "start": "nodemon ./src/server.js",
+    "commit": "yarn git-cz",
+    "documentation": "documentation build src/server.js -f html -o docs"
+  },
+  "name": "backend",
+  "version": "0.0.1",
+  "main": "server.js",
+  "license": "MIT",
+  "devDependencies": {
+    "commitizen": "^4.0.3",
+    "documentation": "^12.1.4",
+    "git-cz": "^4.2.0",
+    "nodemon": "^2.0.1"
+  }
+}
