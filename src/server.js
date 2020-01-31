@@ -249,11 +249,11 @@ app.post("/api/categories", (req, res) => {
 });
 
 /**
- * /api/categories
+ * /api/transaction
  *
- * @param {String} category_name
- * @param {String} category_details
- *
+ * @param {Array} cart array of product
+ * @param {String} transaction_price total price of transaction
+ * @param {String} staff object of staff
  * @returns {Object} {transaction: Array,productsInTransaction: Array}
  */
 app.post("/api/transaction", (req, res) => {

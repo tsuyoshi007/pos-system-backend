@@ -8,13 +8,13 @@ function transactions() {
   };
 
   this.createTransaction = async function(requestBody) {
-    const { cart, transaction_price, staff_id } = requestBody;
+    const { cart, transaction_price, staff } = requestBody;
     const client = await pool.connect();
     try {
       await client.query("BEGIN");
       const transaction = await db.executeWithParam(
         "insert into transaction (transaction_price,staff_id) values ($1,$2) returning transaction_id,to_char(transaction_date, 'DD Mon YYYY - HH:MI') as transaction_date,transaction_price,staff_id;",
-        [transaction_price, staff_id]
+        [transaction_price, staff.staff_id]
       );
       const productsOfTransaction = cart.reduce(
         (productInTransaction, cartItem) => {
@@ -40,7 +40,7 @@ function transactions() {
       };
     } catch (e) {
       await client.query("ROLLBACK");
-      throw e;
+      Promise.reject(e);
     } finally {
       client.release();
     }
